@@ -1,0 +1,12 @@
+<%= form_for(@user) do |f| %>
+    <%= f.label 'First Name: ' %><br>
+    <%= f.text_field :first_name %><br>
+    <%= f.label 'Last Name: ' %><br>
+    <%= f.text_field :last_name %><br>
+    <%= f.label 'Email: ' %><br>
+    <%= f.text_field :email %><br>
+    <%= f.label 'Password' %>
+    <%= f.password_field :password %>
+
+    <%= f.submit "Create Account" %>
+<% end %>
