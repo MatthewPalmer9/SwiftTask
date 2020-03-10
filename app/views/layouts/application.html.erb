@@ -99,7 +99,6 @@
         justify-content: center;
         text-align: center;
         padding-top: 10%;
-        padding-left: 5%;
         margin: 0;
         font-size: 4rem;
       }
@@ -107,7 +106,6 @@
       h3 {
         justify-content: center;
         text-align: center;
-        padding-left: 5%;
         padding-bottom: 1%;
         margin: 0;
         font-size: 2rem;
@@ -267,13 +265,13 @@
       <div class="navbar-container">
         <ul class="navbar-ul">
 
-          <li class="nav-brand"><a href="#"> <span id="slashes">//</span> Swift Task </a></li>
+          <li class="nav-brand"><a href="/"> <span id="slashes">//</span> SWIFT TASK </a></li>
 
-          <li class="list-item"><a class="nav-link" href="/"> Home </a></li>
-          <li class="list-item"><a class="nav-link" href="/about"> About </a></li>
+          <li class="list-item"><a class="nav-link" href="/"> HOME </a></li>
+          <li class="list-item"><a class="nav-link" href="/about"> ABOUT </a></li>
 
-          <li class="list-right"><a class="login" href="#">Log In</a></li>
-          <li class="list-right"><a class="signup" href="#">Sign Up</a></li>
+          <li class="list-right"><a class="login" href="/login">LOG IN</a></li>
+          <li class="list-right"><a class="signup" href="/signup">SIGN UP</a></li>
         </ul>
       </div>
     </nav>
@@ -289,7 +287,7 @@
     var sticky = navbar.offsetTop;
 
     function myFunction() {
-      if (window.pageYOffset !== sticky) {
+      if (window.pageYOffset >= sticky) {
         navbar.classList.add("sticky");
       } else {
         navbar.classList.remove("sticky");
