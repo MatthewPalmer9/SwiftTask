@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
     def index
-        @user = User.find_by(params[:id])
+        @user = User.find_by(id: session[:user_id])
     end 
 end 

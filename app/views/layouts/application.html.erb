@@ -311,7 +311,7 @@
           <% if session[:user_id].nil? %>
             <li class="list-right"><a class="login" href="/login">LOG IN</a></li>
             <li class="list-right"><a class="signup" href="/signup">SIGN UP</a></li>
-          <% else %>
+          <% else%>
             <li class="list-right greeting"> Hello, <%= @user.get_name %>!
               <%= form_for(:logout, url: '/logout') do |f| %>
                 <%= f.submit "Log Out >>", :class => 'btn' %>
