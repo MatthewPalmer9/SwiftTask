@@ -1,14 +1,12 @@
 <%= form_for :user, url: '/signup' do |f| %>
-    <%= f.label 'First Name: ' %><br>
+    <%= f.label :first_name %><br>
     <%= f.text_field :first_name %><br>
-    <%= f.label 'Last Name: ' %><br>
+    <%= f.label :last_name %><br>
     <%= f.text_field :last_name %><br>
-    <%= f.label 'Email: ' %><br>
+    <%= f.label :email %><br>
     <%= f.text_field :email %><br>
-    <%= f.label 'Password: ' %><br>
+    <%= f.label :password %><br>
     <%= f.password_field :password %><br>
-    <%= f.label 'Confirm Password: ' %><br>
-    <%= f.password_field :password_confirmation %><br>
 
     <%= f.submit "Create Account" %>
 <% end %>
