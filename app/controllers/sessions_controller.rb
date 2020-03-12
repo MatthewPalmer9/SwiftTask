@@ -12,8 +12,21 @@ class SessionsController < ApplicationController
         end 
     end 
 
+    def facebook
+        @user = User.from_omniauth(request.env["omniauth.auth"])
+        @user.save 
+
+        redirect_to '/'
+    end 
+
     def destroy 
         session.delete(:user_id)
         redirect_to '/'
+    end 
+
+    private 
+
+    def auth
+        request.env['omniauth.auth']
     end 
 end 

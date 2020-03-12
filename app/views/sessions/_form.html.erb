@@ -1,8 +1,13 @@
-<%= form_for(:session, url: login_path) do |f| %>
-    <%= f.label :email %><br>
-    <%= f.text_field :email %><br>
-    <%= f.label :password %><br>
-    <%= f.password_field :password %><br>
+<div class="forms">
+    <h3> Log In </h3>
+    <hr>
+    <%= form_for(:session, url: login_path) do |f| %>
+        <%= f.label :email %><br>
+        <%= f.text_field :email %><br><br>
+        <%= f.label :password %><br>
+        <%= f.password_field :password %><br><br>
 
-    <%= f.submit 'Log In' %>
-<% end %>
+        <%= f.submit 'Log In', :class => 'login' %>
+    <% end %>
+    <%= link_to('Log in with Facebook!', '/auth/facebook') %>
+</div>

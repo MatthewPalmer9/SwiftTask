@@ -1,0 +1,21 @@
+<nav class="sticky" id="navbar">
+    <div class="navbar-container">
+    <ul class="navbar-ul">
+
+        <li class="nav-brand"><a href="/"> <span id="slashes">//</span> SWIFT TASK </a></li>
+
+        <li class="list-item"><a class="nav-link" href="/"> HOME </a></li>
+        <li class="list-item"><a class="nav-link" href="/about"> ABOUT </a></li>
+        <% if session[:user_id].nil? %>
+            <li class="list-right"><a class="login" href="/login">LOG IN</a></li>
+            <li class="list-right"><a class="signup" href="/signup">SIGN UP</a></li>
+        <% else%>
+            <li class="list-right greeting"> Hello, <%= @user.first_name %>!
+              <%= form_for(:logout, url: '/logout') do |f| %>
+                <%= f.submit "Log Out >>", :class => 'btn' %>
+                <% end %>
+            </li>
+        <% end %>
+    </ul>
+    </div>
+</nav>
