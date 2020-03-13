@@ -19,7 +19,6 @@ class SessionsController < ApplicationController
             u.image = auth['info']['image']
             u.provider = "facebook"
         end
-        
         session[:user_id] = @user.id
       
         redirect_to '/'

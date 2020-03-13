@@ -17,7 +17,7 @@
                 <% end %>
             </li>
         <% else %>
-            <li class="list-right greeting">Hello, <%= @user.first_name %> <% binding.pry %>!
+            <li class="list-right greeting">Hello, <%= @user.first_name %>!
               <%= form_for(:logout, url: '/logout') do |f| %>
                 <%= f.submit "Log Out >>", :class => 'btn' %>
                 <% end %>

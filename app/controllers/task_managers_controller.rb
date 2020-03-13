@@ -1,0 +1,3 @@
+class TaskManagersController < ApplicationController
+    
+end 

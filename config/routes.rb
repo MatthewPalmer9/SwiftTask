@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'welcome#index'
   resources :users
+  resources :tasks
+  resources :task_managers
+  resources :task_groups
 
   get '/about' => "about#index"
   get '/login' => "sessions#new"
