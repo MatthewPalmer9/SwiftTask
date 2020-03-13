@@ -1,5 +1,12 @@
 <section>
-<h1>Welcome to Swift Task!</h1>
-<h3>It's not just a task list <span id="dash">-</span> It's an experience! </h3>
-<button class="get-started"><a class="get-started" href="/signup">Get Started</a></button>
+
+<% if session[:user_id].nil? %>
+    <h1>Welcome to Swift Task!</h1>
+    <h3>It's not just a task list <span id="dash">-</span> It's an experience! </h3>
+    <button class="get-started"><a class="get-started" href="/signup">Get Started</a></button>
+<% else %>
+    <h1>Welcome back!</h1>
+    <button class="get-started"><a class="get-started" href="/dashboard">Dashboard >></a></button>
+<% end %>
+
 </section>

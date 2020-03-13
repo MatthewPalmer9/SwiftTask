@@ -1,4 +1,6 @@
 class TaskManager < ActiveRecord::Base
-    has_many :users
-    has_many :tasks, through: :users 
+    has_many :tasks
+    has_many :users, through: :tasks 
+    has_many :task_groups
+    has_many :users, through: :task_groups
 end 

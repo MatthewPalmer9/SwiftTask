@@ -5,11 +5,23 @@ Rails.application.routes.draw do
   resources :task_managers
   resources :task_groups
 
-  get '/about' => "about#index"
+  # Sessions Routes #
   get '/login' => "sessions#new"
   post '/login' => "sessions#create"
-  get '/signup' => "users#new"
-  post '/signup' => "users#create"
   post '/logout' => "sessions#destroy"
   get '/auth/facebook/callback' => "sessions#facebook"
+  # Sessions Routes #
+
+  # ------ #
+
+  # Custom Routes #
+  get '/about' => "about#index"
+  get '/dashboard' => "users#dashboard"
+  # Custom Routes #
+
+  # Users Routes #
+  get '/signup' => "users#new"
+  post '/signup' => "users#create"
+  # Users Routes #
+
 end

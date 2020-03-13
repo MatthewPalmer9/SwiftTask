@@ -1,5 +1,11 @@
 class User < ActiveRecord::Base
 
+    has_many :tasks
+    has_many :task_managers
+    has_many :tasks, through: :task_managers
+    has_many :task_groups
+    has_many :task_managers, through: :task_groups
+
     before_save { self.email = email.downcase }
     has_secure_password
 
