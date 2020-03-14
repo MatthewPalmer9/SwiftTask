@@ -2,6 +2,12 @@ class UsersController < ApplicationController
 
     def dashboard
         @user = User.find_by(id: session[:user_id])
+        if @user.nil?
+            flash[:success] = "You must be logged in to view the dashboard."
+            redirect_to '/'
+        else 
+            @user = User.find_by(id: session[:user_id])
+        end 
     end 
 
     def new
@@ -9,6 +15,7 @@ class UsersController < ApplicationController
     end
 
     def show
+        @user = User.find_by(id: session[:user_id])
     end 
 
     def index

@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   root 'welcome#index'
-  resources :users
+  resources :users do 
+    resources :tasks
+  end 
+
+  resources :tasks do 
+    resources :users
+  end 
+  
   resources :tasks
   resources :task_managers
   resources :task_groups
@@ -22,6 +29,7 @@ Rails.application.routes.draw do
   # Users Routes #
   get '/signup' => "users#new"
   post '/signup' => "users#create"
+  post '/users/:id//tasks/new' => "tasks#create"
   # Users Routes #
 
 end

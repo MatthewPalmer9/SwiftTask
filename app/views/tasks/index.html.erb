@@ -1,0 +1,8 @@
+<div class="dash-container">
+<button class="create-tasks"><a class="Create-tasks-link" href="/users/<%= @user.id %>/tasks/new">Create a Task</a></button>
+ </div>
+
+<% @user.tasks.each do |task| %>
+    <h1><%= task.name %></h1>
+    <h3><%= task.description %></h3>
+<% end %>

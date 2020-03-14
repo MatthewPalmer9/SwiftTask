@@ -3,13 +3,13 @@
     <div class="dash-container">
         <ul>
             <li class="dash-item">
-                <button class="your-tasks"><a class="your-tasks-link" href="/user/:id/tasks">Your Personal Tasks</a></button>
+                <button class="your-tasks"><a class="your-tasks-link" href="/users/<%= @user.id %>/tasks">Your Personal Tasks</a></button>
             </li>
             <li class="dash-item">
-                <button class="task-groups"><a class="task-groups-link" href="/user/:id/groups">Task<br> Groups</a></button>
+                <button class="task-groups"><a class="task-groups-link" href="/users/<%= @user.id %>/groups">Task<br> Groups</a></button>
             </li>
             <li class="dash-item">
-                <button class="create-group"><a class="create-group-link" href="/user/:id/groups/new">Create a Group</a></button>
+                <button class="create-group"><a class="create-group-link" href="/users/<%= @user.id %>/groups/new">Create a<br> Group</a></button>
             </li>
         </ul>
     </div>

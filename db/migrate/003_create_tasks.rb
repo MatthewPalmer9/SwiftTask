@@ -1,10 +1,11 @@
 class CreateTasks < ActiveRecord::Migration[5.2]
     def change 
         create_table :tasks do |t|
-            t.string :task_name
-            t.string :task_description 
+            t.string :name
+            t.string :description 
+            t.boolean :completed, default: false
             t.integer :user_id
-            t.integer :task_manager_id
+            t.integer :project_id
 
             t.timestamps null: false
         end 
