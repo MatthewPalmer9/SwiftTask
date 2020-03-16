@@ -68,7 +68,11 @@ class TasksController < ApplicationController
     end
   
     def require_login
-        return head(:forbidden) unless session.include? :user_id
+        # return head(:forbidden) unless session.include? :user_id
+        if session[:user_id].nil?
+            flash[:error] = "You must be logged in to view tasks."
+            redirect_to root_path
+        end 
     end
 end
   
