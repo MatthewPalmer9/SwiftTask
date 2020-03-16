@@ -84,8 +84,32 @@
         font-size: 26px;
       }
 
-      .create-tasks {
-  
+      button.create-tasks {
+        background-color: green;
+        border: 2px solid rgba(80,220,80,0.9);
+        border-radius: 20px;
+        align-items: center;
+        margin-left: 50%;
+        margin-right: 50%;
+        width: 30%;
+        -webkit-box-shadow: inset 0px 0px 15px -6px #000000; 
+        box-shadow: inset 0px 0px 15px -6px #000000;
+      }
+
+      button.create-tasks:hover {
+        background-color: green;
+        border: 2px solid rgba(80,180,80,0.9);
+        border-radius: 20px;
+        align-items: center;
+        margin-left: 50%;
+        margin-right: 50%;
+        width: 30%;
+      }
+
+      div.dash-container a {
+        text-decoration: none;
+        color: white;
+        font-size: 18px;
       }
 
       .get-started {
@@ -104,8 +128,8 @@
 
       .dash-container {
         padding-top: 10%;
-        padding-left: 5%;
-        padding-right: 5%;
+        padding-left: 0%;
+        padding-right: 20%;
       }
 
       .dash-item {
@@ -115,13 +139,21 @@
         font-size: 24px;
       }
 
-      .flash {
+      div.error-container{
         width: 100%;
-        padding-top: 3%;
+        padding-top: 10%;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        /* margin-left: 40%; */
+      }
+
+      .flash-error {
+        width: 100%;
         text-align: center !important;
         justify-content: center !important;
         align-items: center !important;
-        background-color: rgba(0,255,0,0.6);
+        background-color: rgba(255,0,0,0.6);
         color: white;
       }
 
@@ -189,6 +221,10 @@
         font-size: 4rem;
       }
 
+      h2 {
+        text-align: center;
+      }
+
       h3 {
         justify-content: center;
         text-align: center;
@@ -199,7 +235,7 @@
       }
 
       hr {
-        width: 20%;
+        width: 50%;
       }
 
       li {
@@ -321,12 +357,27 @@
         color: rgba(0,66,155,0.9);
       }
 
+      span {
+        width: 100%;
+      }
+
       .sticky {
         position: fixed;
         top: 0;
         width: 100%;
         -webkit-box-shadow: 0px 1px 15px -6px #000000; 
         box-shadow: 0px 1px 15px -6px #000000;
+      }
+
+      .table-labels {
+        width: 100%;
+      }
+
+      a.task-groups {
+        text-decoration: none;
+        text-align: center;
+        color: white;
+        font-size: 26px;
       }
 
       .task-groups {
@@ -352,6 +403,14 @@
       .task-groups-link {
         color: white;
         font-size: 26px;
+      }
+
+      td {
+        text-align: center;
+      }
+
+      th, td {
+        border: 1px solid grey;
       }
 
       ul {

@@ -12,7 +12,7 @@
         <tr>
             <td><%= task.description %></td>
             <td> <%= task.due_date.strftime("%B %d, %Y") unless task.due_date.nil?  %> </td>
-            <td> <%= task.user.username  %> </td>
+            <td> <%= task.user.name  %> </td>
             <td> <%=  link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' }  %> </td>
             <td> Completed </td>
         </tr>

@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+    def most_projects
+        @user = User.most_projects
+    end 
+
     def dashboard
         @user = User.find_by(id: session[:user_id])
         if @user.nil?

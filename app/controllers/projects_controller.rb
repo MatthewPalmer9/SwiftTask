@@ -1,16 +1,19 @@
 class ProjectsController < ApplicationController
     before_action :require_login
     before_action :set_project, only: [:show, :edit, :update, :destroy]
-    
+
     def index
+        current_user
         @projects = Project.all
     end
   
     def show
+        current_user
         @tasks = @project.tasks
     end
   
     def new
+        current_user
         @project = Project.new
     end
   
@@ -51,7 +54,10 @@ class ProjectsController < ApplicationController
     end
   
     def require_login
-        return head(:forbidden) unless session.include? :user_id
+        if session[:user_id].nil?
+            flash[:error] = "You must be logged in to view this page."
+            redirect_to root_path
+        end 
     end
 end
   

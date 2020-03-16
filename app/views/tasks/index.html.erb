@@ -1,14 +1,14 @@
 <div class="dash-container">
     <button class="create-tasks"><%= link_to "Create a New Task", new_user_task_path(@user) %></button>
-</div>
+</div><br>
 
-<div class="">
+<div class="table-labels">
     <%= render 'tasklist', :locals => {:@tasks => @tasks} %>
 </div>
 
 <br><br>
 
 <div class="">
-    <h2><-Completed Tasks-></h2>
+    <h2><-Completed Tasks-></h2><hr><br>
     <%= render 'completed', :locals => {:@tasks => @tasks} %>
 </div>
