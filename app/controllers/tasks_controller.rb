@@ -37,6 +37,7 @@ class TasksController < ApplicationController
     end
   
     def edit
+        current_user
     end
   
     def update
@@ -53,7 +54,7 @@ class TasksController < ApplicationController
     end
   
     def destroy
-        @task.destroy
+        Task.find(params[:id]).destroy
         redirect_to projects_path
     end
   

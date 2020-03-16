@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'welcome#index'
-  
+
   resources :users, only: [:new, :create] do 
     resources :tasks, only: [:index, :show, :new]
   end 
@@ -36,6 +36,8 @@ Rails.application.routes.draw do
 
   # Tasks Routes #
   get '/tasks/:id/complete' => "tasks#complete"
+  get '/destroy' => "tasks#destroy"
+  get '/destroy/:id' => "tasks#destroy"
   # Tasks Routes # 
 
 end
