@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
     has_many :tasks
     has_many :projects, through: :tasks
 
+    scope :most_projects, -> {joins(:projects).group(:user_id).order("COUNT(*) DESC").first}
+
 
     before_save { self.email = email.downcase }
     has_secure_password

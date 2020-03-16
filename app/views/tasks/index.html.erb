@@ -1,8 +1,14 @@
 <div class="dash-container">
-<button class="create-tasks"><a class="Create-tasks-link" href="/users/<%= @user.id %>/tasks/new">Create a Task</a></button>
- </div>
+    <button class="create-tasks"><%= link_to "Create a New Task", new_user_task_path(@user) %></button>
+</div>
 
-<% @user.tasks.each do |task| %>
-    <h1><%= task.name %></h1>
-    <h3><%= task.description %></h3>
-<% end %>
+<div class="">
+    <%= render 'tasklist', :locals => {:@tasks => @tasks} %>
+</div>
+
+<br><br>
+
+<div class="">
+    <h2><-Completed Tasks-></h2>
+    <%= render 'completed', :locals => {:@tasks => @tasks} %>
+</div>

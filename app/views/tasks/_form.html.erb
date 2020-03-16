@@ -1,35 +1,30 @@
 <% if @task.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@task.errors.count, "error") %>
-      prohibited this post from being saved:
-    </h2>
+    <div class="error_msg">
+        <h2>
+        <%= pluralize(@task.errors.count, "error") %>
+        prohibited this post from being saved:
+        </h2>
 
-    <ul>
-    <% @task.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
+        <ul>
+            <% @task.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+    </div>
 <% end %>
 
 
 
 <br>
-
-  <%= form_for(@task) do |f| %>
+<%= form_for(@task) do |f| %>
     <div>
         <%= f.label :description, "Description:" %>
-        <%= f.text_field :description, class: "task-form" %>
+        <%= f.text_field :description, class: "task-form-field" %>
     </div>
-
-
     <div>
         <%= f.label :due_date, "Due Date:"%>
-        <%= f.date_select :due_date, class: "task-form" %>
+        <%= f.date_select :due_date, class: "task-form-field" %>
     </div>
-
-
     <div>
         <%= f.label :project_id, "Please choose the project for this task:" %><br>
         <%= f.collection_select :project_id, Project.all, :id, :name %>
