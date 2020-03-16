@@ -1,16 +1,13 @@
 Rails.application.routes.draw do
   root 'welcome#index'
-  resources :users do 
-    resources :tasks
+  
+  resources :users, only: [:new, :create] do 
+    resources :tasks, only: [:index, :show, :new]
   end 
 
-  resources :tasks do 
-    resources :users
-  end 
-  
+  resources :projects
   resources :tasks
-  resources :task_managers
-  resources :task_groups
+
 
   # Sessions Routes #
   get '/login' => "sessions#new"
@@ -24,12 +21,21 @@ Rails.application.routes.draw do
   # Custom Routes #
   get '/about' => "about#index"
   get '/dashboard' => "users#dashboard"
+  get '/users/most_projects' => "users#most_projects"
   # Custom Routes #
+
+  # ------ #
 
   # Users Routes #
   get '/signup' => "users#new"
   post '/signup' => "users#create"
-  post '/users/:id//tasks/new' => "tasks#create"
+  post '/users/:id/tasks/new' => "tasks#create"
   # Users Routes #
+
+  # ------ #
+
+  # Tasks Routes #
+  get '/tasks/:id/complete' => "tasks#complete"
+  # Tasks Routes # 
 
 end
