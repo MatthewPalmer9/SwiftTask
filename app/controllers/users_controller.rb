@@ -9,8 +9,6 @@ class UsersController < ApplicationController
         if @user.nil?
             flash[:error] = "You must be logged in to view the dashboard."
             redirect_to '/'
-        else 
-            @user = User.find_by(id: session[:user_id])
         end 
     end 
 

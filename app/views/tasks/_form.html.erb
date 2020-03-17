@@ -14,8 +14,7 @@
 <% end %>
 
 
-
-<br><br><br><br><br><br>
+<br><br><br><br><br>
 <%= form_for(@task) do |f| %>
     <div>
         <%= f.label :description, "Description:" %>
@@ -32,16 +31,13 @@
 
 
 
-    <% if @user %>
+    <% if !@user %>
        <%= f.hidden_field :user_id  %>
     <% else  %>
       <div>
+        <%= f.hidden_field :user_id  %>
         <%= f.label :user_id, "Select the User for this task:" %><br>
-        <% if @user.provider.nil? %>
-            <%= f.collection_select :user_id, User.all, :id, :first_name %>
-        <% else %>
-            <%= f.collection_select :user_id, User.all %>
-        <% end %>
+        <%= f.collection_select :user_id, User.all, :id, :first_name %>
       </div>
     <% end %>
 

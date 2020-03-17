@@ -7,6 +7,7 @@ class TasksController < ApplicationController
             if User.find(session[:user_id]) == current_user
                 @user = User.find(session[:user_id])
                 @tasks = @user.tasks
+                @project = Project.find_by(:user_id => @user.id)
             else
                 redirect_to projects_path
                 flash[:notice] = "Unauthorized Access."
@@ -49,13 +50,14 @@ class TasksController < ApplicationController
     end
   
     def complete
+        @task = Task.find(params[:id])
         @task.update(completed: true)
-        redirect_to projects_path
+        redirect_to '/tasks'
     end
   
     def destroy
         Task.find(params[:id]).destroy
-        redirect_to projects_path
+        redirect_to tasks_path
     end
   
     private

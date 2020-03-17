@@ -1,6 +1,6 @@
 <section>
     <h1>Dashboard for 
-        <% if @user.provider = "facebook" %> 
+        <% if @user.provider == "facebook" %> 
             <%= @user.name %> 
         <% else %> 
             <%= @user.first_name %> 

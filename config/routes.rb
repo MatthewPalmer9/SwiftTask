@@ -37,7 +37,8 @@ Rails.application.routes.draw do
   # Tasks Routes #
   get '/tasks/:id/complete' => "tasks#complete"
   get '/destroy' => "tasks#destroy"
-  get '/destroy/:id' => "tasks#destroy"
+  get '/destroy/task/:id' => "tasks#destroy"
+  get '/destroy/project/:id' => "projects#destroy"
   # Tasks Routes # 
 
 end

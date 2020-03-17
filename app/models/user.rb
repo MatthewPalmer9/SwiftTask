@@ -4,12 +4,12 @@ class User < ActiveRecord::Base
     has_many :projects, through: :tasks
 
     scope :most_projects, -> {joins(:projects).group(:user_id).order("COUNT(*) DESC").first}
-
-
-    before_save { self.email = email.downcase }
     has_secure_password
 
+    before_save { self.email = email.downcase }
+
     if has_provider = "facebook"
+        validates :first_name, presence: true, length: { minimum: 1 }
     else 
         validates :first_name, presence: true, length: { minimum: 1 }
         validates :last_name, presence: true, length: { minimum: 1 }

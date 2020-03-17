@@ -5,10 +5,12 @@ class ProjectsController < ApplicationController
     def index
         current_user
         @projects = Project.all
+        @project = Project.find_by(:user_id => @user.id)
     end
   
     def show
         current_user
+        @project
         @tasks = @project.tasks
     end
   
@@ -19,6 +21,7 @@ class ProjectsController < ApplicationController
   
     def create
         @project = Project.new(project_params)
+        @project.user_id = current_user.id
         if @project.save
             redirect_to projects_path
         else
@@ -38,8 +41,7 @@ class ProjectsController < ApplicationController
     end
   
     def destroy
-        @project = Project.find(params[:id])
-        @project.destroy
+        Project.find(params[:id]).destroy
         redirect_to projects_path
     end
   
@@ -50,7 +52,7 @@ class ProjectsController < ApplicationController
     end
   
     def project_params
-        params.require('project').permit(:name)
+        params.require('project').permit(:name, :user_id)
     end
   
     def require_login

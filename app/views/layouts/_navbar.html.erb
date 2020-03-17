@@ -20,7 +20,12 @@
                 <% end %>
             </li>
         <% else %>
-            <li class="list-right greeting">Hello, <%= @user.first_name %>!
+            <li class="list-right greeting">Hello, 
+            <% if @user.provider.nil? %>
+                <%= @user.first_name %>
+            <% else %>
+                <%= @user.name %>
+            <% end %>!
               <%= form_for(:logout, url: '/logout') do |f| %>
                 <%= f.submit "Log Out >>", :class => 'btn' %>
                 <% end %>
