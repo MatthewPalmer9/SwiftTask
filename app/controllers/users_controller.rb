@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
     def most_projects
-        @user = User.most_projects
+        current_user
+        @most_projects = User.most_projects
     end 
 
     def dashboard

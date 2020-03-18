@@ -7,7 +7,7 @@ class TasksController < ApplicationController
             if User.find(session[:user_id]) == current_user
                 @user = User.find(session[:user_id])
                 @tasks = @user.tasks
-                @project = Project.find_by(:user_id => @user.id)
+                @project = Project.find_by(:user_project_id => @user.id)
             else
                 redirect_to projects_path
                 flash[:notice] = "Unauthorized Access."

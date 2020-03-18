@@ -13,7 +13,7 @@
         <% if session[:user_id].nil? %>
             <li class="list-right"><a class="login" href="/login">LOG IN</a></li>
             <li class="list-right"><a class="signup" href="/signup">SIGN UP</a></li>
-        <% elsif !@user.provider.nil? %>
+        <% elsif @user.provider == "facebook" %>
             <li class="list-right greeting"> <img class="fb-img" src="<%= @user.image %>"> Hello, <%= @user.name %>!
               <%= form_for(:logout, url: '/logout') do |f| %>
                 <%= f.submit "Log Out >>", :class => 'btn' %>

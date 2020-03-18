@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
     def index
         current_user
         @projects = Project.all
-        @project = Project.find_by(:user_id => @user.id)
+        @project = Project.find_by(:user_project_id => @user.id)
     end
   
     def show
@@ -21,7 +21,7 @@ class ProjectsController < ApplicationController
   
     def create
         @project = Project.new(project_params)
-        @project.user_id = current_user.id
+        @project.user_project_id = current_user.id
         if @project.save
             redirect_to projects_path
         else
