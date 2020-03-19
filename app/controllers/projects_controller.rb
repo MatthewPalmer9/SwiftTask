@@ -3,19 +3,15 @@ class ProjectsController < ApplicationController
     before_action :set_project, only: [:show, :edit, :update, :destroy]
 
     def index
-        current_user
         @projects = Project.all
-        @project = Project.find_by(:user_project_id => @user.id)
+        @task = Task.first
     end
   
     def show
-        current_user
-        @project
         @tasks = @project.tasks
     end
   
     def new
-        current_user
         @project = Project.new
     end
   

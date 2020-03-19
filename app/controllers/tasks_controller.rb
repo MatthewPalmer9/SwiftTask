@@ -3,18 +3,8 @@ class TasksController < ApplicationController
     before_action :set_task, only: [:edit, :update, :destroy, :complete]
   
     def index
-        if session[:user_id]
-            if User.find(session[:user_id]) == current_user
-                @user = User.find(session[:user_id])
-                @tasks = @user.tasks
-                @project = Project.find_by(:user_project_id => @user.id)
-            else
-                redirect_to projects_path
-                flash[:notice] = "Unauthorized Access."
-            end
-        else
-            @tasks = Task.all
-        end
+        @tasks = current_user.tasks
+        @project = Project.find_by(:user_project_id => current_user.id) 
     end
   
     def new
@@ -38,7 +28,7 @@ class TasksController < ApplicationController
     end
   
     def edit
-        current_user
+
     end
   
     def update

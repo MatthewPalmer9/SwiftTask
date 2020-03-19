@@ -1,7 +1,8 @@
 <h1><%= @project.name %></h1><hr>
-<% if @project.user_project_id == @user.id %>
+<% if @project.tasks == current_user.id %>
+<% binding.pry %>
     <%= link_to "Edit Project", edit_project_path(@project) %>
-    <%= link_to "Delete Project", "/destroy/project/#{@project.id}", method: :delete, data: { confirm: 'Are you sure you want to delete this project?' }  %> </td>
+    <%= link_to "Delete Project", "/project/#{@project.id}", method: :delete, data: { confirm: 'Are you sure you want to delete this project?' }  %> </td>
 <% end %>
 <% tasks = @project.tasks %>
 <%= render partial: 'tasks/tasklist', :locals => {:@tasks => tasks}%>

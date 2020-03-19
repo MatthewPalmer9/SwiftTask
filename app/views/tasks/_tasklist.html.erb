@@ -16,22 +16,25 @@
             <td><%= task.description %></td>
             <td> <%= task.project.name %> </td>
             <td> <%= task.due_date.strftime("%B %d, %Y") unless task.due_date.nil?  %> </td>
-            <% if @user.first_name.nil? %>
+            <% if current_user.first_name.nil? %>
                 <td> <%= task.user.name %> </td>
             <% else %>
                 <td> <%= task.user.first_name %>
             <% end %>
             
-            <% if @user.id == Project.find_by(:user_project_id => @user.id).user_project_id %>
-              <td> <%= link_to "Edit", edit_task_path(task) %> <hr> <%=  link_to 'Delete', "/destroy/task/#{task.id}", method: :delete, data: { confirm: 'Are you sure you want to delete this task?' }  %> </td>
+            <% if current_user.id %> 
+              
+              <% if task.project %>
+                <td> <%= link_to "Edit", edit_task_path(task) %> <hr> <%= button_to "Delete Task", task_path(task), method: :delete %></td>
+              <% end %>
             <% else %>
               <td></td>
             <% end %>
 
-            <% if task.user_id == @user.id %>
+            <% if task.user_id == current_user.id %>
               <td> <a class="" href="/tasks/<%= task.id %>/complete">Complete</a></td>
             <% else %>
-              <td></td>
+              <td>Not Complete</td>
             <% end %>
         </tr>
       <% end %>

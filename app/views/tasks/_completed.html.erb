@@ -19,7 +19,7 @@
             <% end %>
             
             <% if task.user_id = @user.id %>
-                <td> <%=  link_to 'Delete', "/destroy/task/#{task.id}", method: :delete, data: { confirm: 'Are you sure you want to delete this task?' }  %> </td>
+                <td> <%= button_to "Delete Task", task_path(task), method: :delete %> </td>
             <% else %>
                 <td></td>
             <% end %>

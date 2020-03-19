@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     def most_projects
         current_user
         @most_projects = User.most_projects
+        binding.pry
     end 
 
     def dashboard

@@ -10,21 +10,21 @@
         <li class="list-item"><a class="nav-link" href="/projects"> PROJECTS </a></li>
         <li class="list-item"><a class="nav-link" href="/tasks"> TASKS </a></li>
 
-        <% if session[:user_id].nil? %>
+        <% if current_user.nil? %>
             <li class="list-right"><a class="login" href="/login">LOG IN</a></li>
             <li class="list-right"><a class="signup" href="/signup">SIGN UP</a></li>
-        <% elsif @user.provider == "facebook" %>
-            <li class="list-right greeting"> <img class="fb-img" src="<%= @user.image %>"> Hello, <%= @user.name %>!
+        <% elsif current_user.provider == "facebook" %>
+            <li class="list-right greeting"> <img class="fb-img" src="<%= current_user.image %>"> Hello, <%= current_user.name %>!
               <%= form_for(:logout, url: '/logout') do |f| %>
                 <%= f.submit "Log Out >>", :class => 'btn' %>
                 <% end %>
             </li>
         <% else %>
             <li class="list-right greeting">Hello, 
-            <% if @user.provider.nil? %>
-                <%= @user.first_name %>
+            <% if current_user.provider.nil? %>
+                <%= current_user.first_name %>
             <% else %>
-                <%= @user.name %>
+                <%= current_user.name %>
             <% end %>!
               <%= form_for(:logout, url: '/logout') do |f| %>
                 <%= f.submit "Log Out >>", :class => 'btn' %>
