@@ -26,6 +26,10 @@ class ProjectsController < ApplicationController
     end
   
     def edit
+        if current_user.id != this_project.user_project_id
+            flash[:error] = "You cannot edit a project that doesn't belong to you."
+            redirect_to projects_path
+        end 
     end
   
     def update
@@ -37,8 +41,13 @@ class ProjectsController < ApplicationController
     end
   
     def destroy
-        Project.find(params[:id]).destroy
-        redirect_to projects_path
+        if current_user.id != this_project.user_project_id
+            flash[:error] = "You cannot destroy a project that doesn't belong to you."
+            redirect_to projects_path
+        else
+            Project.find(params[:id]).destroy
+            redirect_to projects_path
+        end 
     end
   
     private
@@ -46,6 +55,10 @@ class ProjectsController < ApplicationController
     def set_project
         @project = Project.find(params[:id])
     end
+
+    def this_project 
+        Project.find(params[:id])
+    end 
   
     def project_params
         params.require('project').permit(:name, :user_id)

@@ -14,14 +14,6 @@ class ApplicationController < ActionController::Base
       @current_user = nil
     end
 
-    def logged_in?
-      if current_user 
-        redirect_to task_path
-      else
-        redirect_to root_path
-      end
-    end
-
     def current_user
       @user = User.find_by(id: session[:user_id])
     end

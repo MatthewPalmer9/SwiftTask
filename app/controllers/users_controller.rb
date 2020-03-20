@@ -1,14 +1,11 @@
 class UsersController < ApplicationController
 
     def most_projects
-        current_user
         @most_projects = User.most_projects
-        binding.pry
     end 
 
     def dashboard
-        @user = User.find_by(id: session[:user_id])
-        if @user.nil?
+        if current_user.nil?
             flash[:error] = "You must be logged in to view the dashboard."
             redirect_to '/'
         end 
@@ -17,14 +14,6 @@ class UsersController < ApplicationController
     def new
         @user = User.new
     end
-
-    def show
-        @user = User.find_by(id: session[:user_id])
-    end 
-
-    def index
-        @user = User.find_by(id: session[:user_id])
-    end 
 
     def create
         @user = User.new(user_params)

@@ -1,12 +1,12 @@
 <section>
 
-<% if flash[:error] %>
-    <div class="error-container">
-        <span class="flash-error"><%= flash[:error] %></span>
+<% if flash[:success] %>
+    <div class="success">
+        <p class="flash-error"><%= flash[:success] %></p>
     </div>
 <% end %>
 
-<% if session[:user_id].nil? %>
+<% if current_user.nil? %>
     <h1>Welcome to Swift Task!</h1>
     <h3>It's not just a task list <span id="dash">-</span> It's an experience! </h3>
     <button class="get-started"><a class="get-started" href="/signup">Get Started</a></button>

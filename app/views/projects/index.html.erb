@@ -1,3 +1,8 @@
+<div class="flash-error">
+  <% if flash[:error] %>
+    <%= flash[:error] %>
+  <% end %>
+</div>
 <h1>Projects</h1><hr>
 
 <a class="task-groups" href="/users/most_projects">Which User Has The Most Projects?</a>

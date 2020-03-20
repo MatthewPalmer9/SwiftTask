@@ -14,11 +14,6 @@
   </head>
 
   <body>
-    <% if session[:user_id].nil? %>
-    <% else %>
-      <h2 class="flash"> <%= flash[:success] %> </h2>
-    <% end %>
-
     
     <!-- Content Yield -->
     <%= yield %>

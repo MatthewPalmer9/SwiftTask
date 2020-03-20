@@ -8,13 +8,7 @@ class TasksController < ApplicationController
     end
   
     def new
-      if session[:user_id]
-        @user = User.find(session[:user_id])
         @task = Task.new(user_id: @user.id)
-      else
-        @user = nil
-        @task = Task.new
-      end
     end
   
     def create
@@ -40,12 +34,20 @@ class TasksController < ApplicationController
     end
   
     def complete
-        @task = Task.find(params[:id])
-        @task.update(completed: true)
-        redirect_to '/tasks'
+        if current_user.id == @task.project.user_project_id
+            @task.update(completed: true)
+            redirect_to '/tasks'
+        else
+            flash[:error] = "You cannot complete a task that was not assigned to you."
+            redirect_to '/tasks'
+        end 
     end
   
     def destroy
+        if current_user.id != this_task.user_id
+            flash[:error] = "You cannot destroy a task that doesn't belong to you."
+            redirect_to projects_path
+        end 
         Task.find(params[:id]).destroy
         redirect_to tasks_path
     end
@@ -55,6 +57,10 @@ class TasksController < ApplicationController
     def set_task
         @task = Task.find(params[:id])
     end
+
+    def this_task
+        Task.find(params[:id])
+    end 
   
     def task_params
         params.require(:task).permit(:due_date, :description, :user_id, :project_id)
@@ -62,7 +68,7 @@ class TasksController < ApplicationController
   
     def require_login
         # return head(:forbidden) unless session.include? :user_id
-        if session[:user_id].nil?
+        if current_user.nil?
             flash[:error] = "You must be logged in to view tasks."
             redirect_to root_path
         end 
