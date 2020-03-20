@@ -65,7 +65,7 @@ class ProjectsController < ApplicationController
     end
   
     def require_login
-        if session[:user_id].nil?
+        if current_user.nil?
             flash[:error] = "You must be logged in to view projects."
             redirect_to root_path
         end 
