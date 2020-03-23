@@ -19,7 +19,7 @@
             <td> <%= task.due_date.strftime("%B %d, %Y") unless task.due_date.nil?  %> </td>
             <td> <%= task.user.first_name %> </td>
 
-            <td> <%= task_owner %></td>
+            <td> <%= task_owner(task) %></td>
             
             <% if current_user.id == task.assigned_by %> 
               <td> <%= link_to "Edit", edit_task_path(task) %> <hr> <%= button_to "Delete Task", task_path(task), method: :delete %></td>

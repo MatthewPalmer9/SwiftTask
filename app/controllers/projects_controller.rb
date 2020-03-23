@@ -4,7 +4,6 @@ class ProjectsController < ApplicationController
 
     def index
         @projects = Project.all
-        @task = Task.first
     end
   
     def show

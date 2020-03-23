@@ -18,8 +18,8 @@ class ApplicationController < ActionController::Base
       @user = User.find_by(id: session[:user_id])
     end
 
-    def task_owner
-      User.find_by(id: @task.assigned_by).first_name
+    def task_owner(task)
+      User.find_by(id: task.assigned_by).first_name
     end 
 
     def signup_user(user)
