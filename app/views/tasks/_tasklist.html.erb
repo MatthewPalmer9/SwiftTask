@@ -5,6 +5,7 @@
       <th scope="col">Project</th>
       <th scope="col">Due Date </th>
       <th scope="col">Assigned To</th>
+      <th scope="col">Assigned By</th>
       <th scope="col">Edit/Delete</th>
       <th scope="col">Complete</th>
     </tr>
@@ -16,17 +17,12 @@
             <td><%= task.description %></td>
             <td> <%= task.project.name %> </td>
             <td> <%= task.due_date.strftime("%B %d, %Y") unless task.due_date.nil?  %> </td>
-            <% if current_user.first_name.nil? %>
-                <td> <%= task.user.name %> </td>
-            <% else %>
-                <td> <%= task.user.first_name %>
-            <% end %>
+            <td> <%= task.user.first_name %> </td>
+
+            <td> <%= task_owner %></td>
             
-            <% if current_user.id %> 
-              
-              <% if task.project %>
-                <td> <%= link_to "Edit", edit_task_path(task) %> <hr> <%= button_to "Delete Task", task_path(task), method: :delete %></td>
-              <% end %>
+            <% if current_user.id == task.assigned_by %> 
+              <td> <%= link_to "Edit", edit_task_path(task) %> <hr> <%= button_to "Delete Task", task_path(task), method: :delete %></td>
             <% else %>
               <td></td>
             <% end %>

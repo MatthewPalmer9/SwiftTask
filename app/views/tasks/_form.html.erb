@@ -29,17 +29,11 @@
         <%= f.collection_select :project_id, Project.all, :id, :name %>
     </div>
 
-
-
-    <% if !@user %>
-       <%= f.hidden_field :user_id  %>
-    <% else  %>
-      <div>
-        <%= f.hidden_field :user_id  %>
-        <%= f.label :user_id, "Select the User for this task:" %><br>
-        <%= f.collection_select :user_id, User.all, :id, :first_name %>
-      </div>
-    <% end %>
+    <div>
+      <%= f.hidden_field :user_id  %>
+      <%= f.label :user_id, "Select the User for this task:" %><br>
+      <%= f.collection_select :user_id, User.all, :id, :first_name %>
+    </div>
 
     <div>
       <%= f.submit "Submit", class: "task-submit" %>

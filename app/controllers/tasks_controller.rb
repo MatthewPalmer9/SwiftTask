@@ -14,6 +14,7 @@ class TasksController < ApplicationController
     def create
         current_user
         @task = Task.new(task_params)
+        @task.assigned_by = current_user.id
         if @task.save
             redirect_to projects_path
         else
@@ -34,10 +35,11 @@ class TasksController < ApplicationController
     end
   
     def complete
-        if current_user.id == @task.project.user_project_id
+        if current_user.id == @task.user_id
             @task.update(completed: true)
             redirect_to '/tasks'
         else
+            binding.pry
             flash[:error] = "You cannot complete a task that was not assigned to you."
             redirect_to '/tasks'
         end 
