@@ -3,7 +3,6 @@ class TasksController < ApplicationController
     before_action :set_task, only: [:edit, :update, :destroy, :complete]
   
     def index
-        @task = Task.first
         @tasks = current_user.tasks
         @project = Project.find_by(:user_project_id => current_user.id) 
     end
