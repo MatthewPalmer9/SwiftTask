@@ -1,13 +1,17 @@
 <div class="flash-error">
-  <% if flash[:error] %>
-    <%= flash[:error] %>
-  <% end %>
+  <% if flash[:success] %>
+    <div class="success">
+        <p class="flash-error"><%= flash[:success] %></p>
+    </div>
+<% end %>
 </div>
+<br><br><br><br><br><br><br><br><br><br>
+<%= render partial: 'searchform', :locals => {:@result => @result} %>
 <h1>Projects</h1><hr>
 
 <a class="task-groups" href="/users/most_projects">Which User Has The Most Projects?</a>
 
-<% @projects.all.each do |project| %>
+<% @projects.each do |project| %>
   <div class="">
     <h2><%= link_to "#{project.name}", project_path(project)%></h2>
     <% tasks = project.tasks %>

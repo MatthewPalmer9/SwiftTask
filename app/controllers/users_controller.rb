@@ -1,14 +1,11 @@
 class UsersController < ApplicationController
+    before_action :require_login, except: [:create, :new]
 
     def most_projects
         @most_projects = User.most_projects
     end 
 
     def dashboard
-        if current_user.nil?
-            flash[:error] = "You must be logged in to view the dashboard."
-            redirect_to '/'
-        end 
     end 
 
     def new

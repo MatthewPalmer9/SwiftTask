@@ -7,7 +7,12 @@ class ProjectsController < ApplicationController
     end
   
     def show
-        @tasks = @project.tasks
+        if !@project.nil?
+            @tasks = @project.tasks
+        else 
+            flash[:success] = "An error occured. Please try again."
+            redirect_to projects_path
+        end 
     end
   
     def new
@@ -52,7 +57,14 @@ class ProjectsController < ApplicationController
     private
   
     def set_project
-        @project = Project.find(params[:id])
+        if params[:name]
+            @project = Project.find_by(name: params[:name])
+        elsif params[:id]
+            @project = Project.find(params[:id])
+        else 
+            flash[:error] = "Project either does not exist or an error occuredn. Please check your spelling."
+            redirect_to projects_path
+        end 
     end
 
     def this_project 

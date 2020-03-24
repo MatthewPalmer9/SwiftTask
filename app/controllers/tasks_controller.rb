@@ -12,7 +12,6 @@ class TasksController < ApplicationController
     end
   
     def create
-        current_user
         @task = Task.new(task_params)
         @task.assigned_by = current_user.id
         if @task.save
@@ -39,7 +38,6 @@ class TasksController < ApplicationController
             @task.update(completed: true)
             redirect_to '/tasks'
         else
-            binding.pry
             flash[:error] = "You cannot complete a task that was not assigned to you."
             redirect_to '/tasks'
         end 
@@ -50,7 +48,7 @@ class TasksController < ApplicationController
             flash[:error] = "You cannot destroy a task that doesn't belong to you."
             redirect_to projects_path
         end 
-        Task.find(params[:id]).destroy
+        this_task.destroy
         redirect_to tasks_path
     end
   
@@ -66,14 +64,6 @@ class TasksController < ApplicationController
   
     def task_params
         params.require(:task).permit(:due_date, :description, :user_id, :project_id)
-    end
-  
-    def require_login
-        # return head(:forbidden) unless session.include? :user_id
-        if current_user.nil?
-            flash[:error] = "You must be logged in to view tasks."
-            redirect_to root_path
-        end 
     end
 end
   
