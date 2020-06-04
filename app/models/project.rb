@@ -4,6 +4,8 @@ class Project < ActiveRecord::Base
     has_many :tasks
     has_many :users, through: :tasks
 
+    scope :filter_by_starts_with, -> (name) { where("name like ?", "#{name.downcase}%")}
+
     def self.search(search)
         if search.nil? || search.empty?
             flash[:error] = "Search field left blank."

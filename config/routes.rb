@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   get '/about' => "about#index"
   get '/dashboard' => "users#dashboard"
   get '/users/most_projects' => "users#most_projects"
-  get '/projects/search' => "projects#search"
   # Custom Routes #
 
   # ------ #
