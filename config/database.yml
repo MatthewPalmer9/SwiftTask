@@ -11,10 +11,6 @@ development:
   <<: *default
   database: postgres
 
-test:
-  <<: *default
-  database: postgres
-
 production:
   <<: *default
   database: postgres
