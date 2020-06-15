@@ -1,20 +1,20 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  username: postgres
+  password: admin
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  port: 5432
+
 
 
 development:
   <<: *default
-  database: myapp_development
+  database: postgres
 
 test:
   <<: *default
-  database: myapp_test
+  database: postgres
 
 production:
   <<: *default
-  database: myapp_production
-  username: swifttask
-  password: <%= ENV['SWIFTTASK_DATABASE_PASSWORD'] %>
+  database: postgres

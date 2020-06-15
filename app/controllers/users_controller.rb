@@ -6,6 +6,12 @@ class UsersController < ApplicationController
     end 
 
     def dashboard
+        def require_login
+            if current_user.nil?
+                flash[:error] = "You must be logged in to view projects."
+                redirect_to root_path
+            end 
+        end
     end 
 
     def new
