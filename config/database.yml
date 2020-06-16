@@ -12,6 +12,10 @@ development:
   <<: *default
   database: postgres
 
+test:
+  <<: *default
+  database: development.sqlite3
+
 production:
   <<: *default
   database: postgres
